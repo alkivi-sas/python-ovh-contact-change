@@ -1,0 +1,44 @@
+{
+    "_meta": {
+        "hash": {
+            "sha256": "de7eb479377703f2bd188c790081d810c3cf233b9bf63e4d9afbc530b64c9c02"
+        },
+        "pipfile-spec": 6,
+        "requires": {
+            "python_version": "3.7"
+        },
+        "sources": [
+            {
+                "name": "pypi",
+                "url": "https://pypi.org/simple",
+                "verify_ssl": true
+            }
+        ]
+    },
+    "default": {
+        "alkivi-logger": {
+            "hashes": [
+                "sha256:69aa00494d55ea23be0e6d5f8c346f00a3531e51422ad602d8852d3d9a174a58"
+            ],
+            "index": "pypi",
+            "version": "==1.2.5"
+        },
+        "click": {
+            "hashes": [
+                "sha256:2335065e6395b9e67ca716de5f7526736bfa6ceead690adf616d925bdc622b13",
+                "sha256:5b94b49521f6456670fdb30cd82a4eca9412788a93fa6dd6df72c94d5a8ff2d7"
+            ],
+            "index": "pypi",
+            "version": "==7.0"
+        },
+        "ovh": {
+            "hashes": [
+                "sha256:03c7a5e7a62e7bc09b899f7692c694360be7db93ebe44428d6605fccda244692",
+                "sha256:f74d190c4bff0953d76124cb8ed319a8a999138720e42957f0db481ef4746ae8"
+            ],
+            "index": "pypi",
+            "version": "==0.5.0"
+        }
+    },
+    "develop": {}
+}
