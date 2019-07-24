@@ -4,8 +4,10 @@
 import logging
 import configparser
 import click
+import ovh
 
 from alkivi.logger import Logger
+from ovh.exceptions import APIError
 
 # Define the global logger
 logger = Logger(min_log_level_to_mail=logging.WARNING,
@@ -39,11 +41,27 @@ def process(dry, debug):
     config = configparser.ConfigParser()
     config.read('/tmp/todo')
 
+    client = ovh.Client()
+
+
     section = config.sections()[0]
     logger.new_loop_logger()
     for key in config[section]:
         logger.new_iteration(prefix=key)
-        logger.debug('info')
+        url = '/me/task/contactChange/{0}'.format(key)
+        contact = client.get(url)
+        logger.debug('current request', contact)
+        if contact['dateDone'] is not None:
+            logger.info('Already accepted')
+        else:
+            params = { 'token': config[section][key] }
+            accept_url = '{0}/accept'.format(url)
+            logger.debug('Going to post to {0} with params'.format(accept_url), params)
+            try:
+                client.post(accept_url, **params)
+            except APIError:
+                logger.info('Already accepted')
+                continue
     logger.del_loop_logger()
 
 
